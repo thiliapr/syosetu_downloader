@@ -36,7 +36,7 @@ python3 apply_translation.py
 
 ## 注意事项
 - 如果你不需要翻译，就只看下载章节那步就好了
-
+- 建议搭配和[tktransl](https://2git.xyz/thiliapr/tktransl)一起使用。
 
 ## 文档
 文档是不可能写的，这辈子都不可能写的。经验表明，写了文档只会变成“代码一天一天改，文档一年不会动”的局面，反而误导人。
