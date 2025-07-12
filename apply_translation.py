@@ -6,8 +6,8 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 import pathlib
-import orjson
 import argparse
+import orjson
 from tqdm import tqdm
 
 
@@ -34,12 +34,12 @@ def main():
             continue
 
         # 读取原章节内容和翻译内容，并生成结果文件
-        with open(chapter_file, encoding="utf-8") as orignal, open(args.translated_dir / (chapter_file.stem + ".json"), encoding="utf-8") as translated, open(args.result_dir / chapter_file.name, "w", encoding="utf-8") as result:
+        with open(chapter_file, encoding="utf-8") as orignal, open(args.translated_dir / (chapter_file.stem + ".json"), "rb") as translated, open(args.result_dir / chapter_file.name, "wb") as result:
             # 读取原章节内容
             content = orignal.read()
 
             # 使用 orjson 解析翻译内容
-            for msg in orjson.load(translated):
+            for msg in orjson.loads(translated.read()):
                 # 如果翻译消息中有 "target"，则替换原内容中的 "source" 为 "target"
                 if "target" in msg:
                     content = content.replace(msg["source"], msg["target"])
