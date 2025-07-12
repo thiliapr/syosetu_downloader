@@ -5,8 +5,8 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 import pathlib
-import orjson
 import argparse
+import orjson
 from tqdm import tqdm
 
 
@@ -30,9 +30,9 @@ def main():
         with open(chapter_file, encoding="utf-8") as rfile, open(args.task_dir / (chapter_file.stem + ".json"), "wb") as wfile:
             # 读取原章节内容并转换为待翻译任务格式
             wfile.write(orjson.dumps([
-                {"source": line}  # 将每行文本转换为待翻译任务格式
+                {"source": line.strip()}  # 将每行文本转换为待翻译任务格式
                 for line in rfile
-                if line  # 过滤掉空行
+                if line.strip()  # 过滤掉空行
             ]))
 
 
