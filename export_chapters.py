@@ -33,7 +33,7 @@ def main():
                 {"source": line}  # 将每行文本转换为待翻译任务格式
                 for line in rfile
                 if line  # 过滤掉空行
-            ], ensure_ascii=False))
+            ]))
 
 
 if __name__ == "__main__":
