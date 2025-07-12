@@ -34,7 +34,7 @@ def main():
             continue
 
         # 读取原章节内容和翻译内容，并生成结果文件
-        with open(chapter_file, encoding="utf-8") as orignal, open(args.translated_dir / (chapter_file.stem + ".json"), "rb") as translated, open(args.result_dir / chapter_file.name, "wb") as result:
+        with open(chapter_file, encoding="utf-8") as orignal, open(args.translated_dir / (chapter_file.stem + ".json"), "rb") as translated, open(args.result_dir / chapter_file.name, "w", encoding="utf-8") as result:
             # 读取原章节内容
             content = orignal.read()
 
