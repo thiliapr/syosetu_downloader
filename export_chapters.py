@@ -27,7 +27,7 @@ def main():
 
     # 处理每个章节文件（如果未翻译过）
     for chapter_file in tqdm([file for file in args.novel_dir.glob("*.txt") if file.stem not in translated_chapters]):
-        with open(chapter_file, encoding="utf-8") as rfile, open(args.task_dir / (chapter_file.stem + ".json"), "wb") as wfile:
+        with open(chapter_file, encoding="utf-8") as rfile, open(args.task_dir / chapter_file.with_suffix(".json").name, "wb") as wfile:
             # 读取原章节内容并转换为待翻译任务格式
             wfile.write(orjson.dumps([
                 {"source": line.strip()}  # 将每行文本转换为待翻译任务格式
